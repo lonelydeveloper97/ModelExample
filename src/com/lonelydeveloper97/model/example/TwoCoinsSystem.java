@@ -1,7 +1,9 @@
 package com.lonelydeveloper97.model.example;
 
+import com.lonelydeveloper97.model.Action;
 import com.lonelydeveloper97.model.State;
 import com.lonelydeveloper97.model.impl.AbstactSystem;
+import com.lonelydeveloper97.model.impl.ComplexAction;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,10 +14,12 @@ public class TwoCoinsSystem  extends AbstactSystem<Coin> {
         super(Arrays.asList(new Coin(), new Coin()));
     }
 
-    public void rethrowAll(){
+    public Action rethrowAllAction(){
+        List<Action> innerActions = new ArrayList<>();
         for(Coin coin: getSubsystems()){
-            coin.throwCoin();
+            innerActions.add(coin.throwCoin());
         }
+        return new ComplexAction(innerActions);
     }
 
     @Override

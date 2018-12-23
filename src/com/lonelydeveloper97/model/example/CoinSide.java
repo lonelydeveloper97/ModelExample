@@ -13,6 +13,11 @@ public abstract class CoinSide extends Element<CoinSide> {
         return name;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
     public final static CoinSide EDGE = new CoinSide("edge") {
     };
     public final static CoinSide HEAD = new CoinSide("head") {
